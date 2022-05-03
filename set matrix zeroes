@@ -2,16 +2,23 @@
         int col0 = 1, rows = matrix.size(), cols = matrix[0].size();
 
     for (int i = 0; i < rows; i++) {
+    
+    //this is for only column no 1
         if (matrix[i][0] == 0) col0 = 0;
+        
+        //we start j=1, because we already done column no 1
         for (int j = 1; j < cols; j++)
             if (matrix[i][j] == 0)
                 matrix[i][0] = matrix[0][j] = 0;
     }
 
     for (int i = rows - 1; i >= 0; i--) {
+    
+    //j>=1 because for 1st column we have col0 value evaluation
         for (int j = cols - 1; j >= 1; j--)
             if (matrix[i][0] == 0 || matrix[0][j] == 0)
                 matrix[i][j] = 0;
+                //1st column evaluation 
         if (col0 == 0) matrix[i][0] = 0;
     }
     }
