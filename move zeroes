@@ -1,4 +1,8 @@
-    void moveZeroes(vector<int>& nums) {
+   
+   //if right==0 move
+   //else swap both, left++, right++
+   
+   void moveZeroes(vector<int>& nums) {
        int n=nums.size();
       
         int left=0,right=0;
