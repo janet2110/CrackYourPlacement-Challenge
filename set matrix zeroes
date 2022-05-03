@@ -4,7 +4,9 @@
     for (int i = 0; i < rows; i++) {
     
     //this is for only column no 1
-        if (matrix[i][0] == 0) col0 = 0;
+    //we dont put inside j loop because
+    //sometimes matrix[i][0]==0 will then lead to col0=0 which is wrong
+    if (matrix[i][0] == 0) col0 = 0;
         
         //we start j=1, because we already done column no 1
         for (int j = 1; j < cols; j++)
