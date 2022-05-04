@@ -1,0 +1,21 @@
+int reverse(int x) {
+       long res = 0;
+        while (x != 0) {
+        
+        //123 ==321 
+        //321=320+1
+        //320=32*10
+        //32=30+2
+        //30=3*10
+        
+        //first we take digit multiply by ten and then add next digit and continue
+            res = res * 10 + x % 10;
+            x = x / 10;
+        }
+        
+        if (res <INT_MIN || res >INT_MAX) {
+            return 0;
+        } else {
+            return (int)res;
+        }
+    }
