@@ -1,0 +1,29 @@
+int maxProfit(vector<int>& prices) {
+        int n=prices.size();
+       
+        //dp isze is [n+1][2] and is initialised with -1
+        vector<vector<int>> dp(n+1, vector<int>(2,-1));
+        
+        dp[n][0]=dp[n][1]=0;
+        
+        //buy=1 because we can buy in first index also
+       return f(dp,prices,n, 0,1);
+       
+    }
+    int f(vector<vector<int>> &dp,vector<int>& prices,int n,int index, int buy){
+        if(index>=n) return 0;
+        
+        if(dp[index][buy]!=-1) return dp[index][buy];
+         int profit=0;
+        
+        //if buying is allowed
+        if(buy==1) //buy yes //buy no   two options
+          profit= max( -prices[index]+f(dp,prices,n,index+1,0),f(dp,prices,n,index+1,1)); 
+       
+        else   //sell yes        // sell no
+          profit= max(prices[index]+f(dp,prices,n,index+1,1), f(dp,prices,n,index+1,0));
+      
+        
+        return dp[index][buy]=profit;
+      
+    }
