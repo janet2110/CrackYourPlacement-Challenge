@@ -1,0 +1,32 @@
+bool checkSimilar(TreeNode* root1, TreeNode* root2){
+        
+        if(root1==NULL && root2==NULL)
+            return true;
+       
+       //same tree not a subtree
+        if(root1==NULL || root2==NULL)
+            return false;
+       
+       //if value same,
+       //check left and right subtree is equal or not
+        return root1->val==root2->val and
+                checkSimilar(root1->left, root2->left) and
+            checkSimilar(root1->right, root2->right);
+    }
+    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
+        
+        if(root==NULL || subRoot==NULL)
+            return false;
+        
+        //if we get correct val, we can proceed
+        if(root->val==subRoot->val){
+            if(checkSimilar(root, subRoot))
+                return true;
+        }
+        
+        //till we get same value 
+        //run the is SubTree function
+        return isSubtree(root->left,subRoot) ||
+                isSubtree(root->right,subRoot);
+        
+    }
