@@ -1,0 +1,27 @@
+ int diameterOfBinaryTree(TreeNode* root) {
+      
+        int diameter=0;
+        ans(root,diameter);
+        
+        return diameter;
+    }
+    int ans( TreeNode* root, int &diameter){
+          if (root==NULL) return 0;
+         
+        int l=ans(root->left,diameter);
+        int r=ans(root->right,diameter);
+        
+        //leftheight+rightheight
+        diameter=max(diameter, l+r);
+        
+        //max(leftdiameter, right,diameter)
+        return 1+max(l,r);
+    }
+    
+    /*
+    Diameter of a tree can be calculated by only using the height function, 
+    because the diameter of a tree is nothing but maximum value of 
+    (left_height + right_height + 1) for each node. 
+    So we need to calculate this value (left_height + right_height + 1)
+    for each node and update the result. Time complexity – O(n)  
+    */
