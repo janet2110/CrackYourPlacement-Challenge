@@ -1,0 +1,31 @@
+vector<vector<int>> levelOrder(TreeNode* root) {
+        if(root==NULL)
+               return {};
+        
+        
+        vector<vector<int>> final;
+        queue<TreeNode*>q;
+        q.push(root);
+        
+        while(!q.empty()){
+             
+            int n=q.size();
+              vector<int>ans;
+            
+            for(int i=0;i<n;i++){
+               
+                //inside for loop because
+                //we need to find left, right of each node
+                TreeNode* node=q.front();
+                 q.pop();
+                
+                
+            ans.push_back(node->val);
+            if(node->left!=NULL) q.push(node->left);
+             if(node->right!=NULL) q.push(node->right);
+            }
+            final.push_back(ans);
+        }
+        
+        return final;
+    }
